@@ -2,7 +2,13 @@
 
 Static legal policies website built with Astro, featuring privacy and cookie policies for multiple brands.
 
-## Structure
+## 🚀 Quick Deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ubergabriel/legal-policies-site)
+
+[![Deploy to Cloudflare Pages](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/ubergabriel/legal-policies-site)
+
+## 📋 Structure
 
 - **Homepage** (`/`): Landing page with links to all policies
 - **Privacy Policy** (`/privacy`): Unified privacy policy with sections for:
@@ -11,7 +17,7 @@ Static legal policies website built with Astro, featuring privacy and cookie pol
   - Bloooz (`/privacy#bloooz`)
 - **Cookies Policy** (`/cookies`): Comprehensive cookies policy
 
-## Development
+## 🛠️ Development
 
 ```bash
 # Install dependencies
@@ -27,34 +33,103 @@ npm run build
 npm run preview
 ```
 
-## Customization
+## 📦 Deployment
 
-To add a new brand to the privacy policy:
+This site is optimized for deployment on:
+- ✅ **Vercel** (recommended)
+- ✅ **Cloudflare Pages** (recommended)
+- GitHub Pages
+- Netlify
+- Any static hosting service
+
+**See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.**
+
+### Quick Deploy to Vercel
+
+```bash
+npm install -g vercel
+vercel
+```
+
+### Quick Deploy to Cloudflare Pages
+
+```bash
+npm install -g wrangler
+npm run build
+wrangler pages deploy dist
+```
+
+## 🎨 Customization
+
+### Add a New Brand
 
 1. Open `src/pages/privacy.astro`
 2. Add a new section with the brand's ID (e.g., `id="newbrand"`)
 3. Update the navigation links
 4. Customize the content for the new brand
 
-## Deployment
+### Update Styles
 
-This site can be deployed to:
-- Vercel
-- Netlify
-- GitHub Pages
-- Any static hosting service
+- Global styles: `src/layouts/Layout.astro`
+- Page-specific styles: Inside each `.astro` file
 
-For custom domain (`legal.misitio.com`), configure your DNS settings to point to your hosting provider.
+### Configure Domain
 
-## Design
+Update `astro.config.mjs`:
 
-The design follows a clean, minimalist aesthetic inspired by Warner Music's legal pages:
-- Black navigation bar
-- Clean typography
+```js
+export default defineConfig({
+  site: 'https://legal.yourdomain.com'
+});
+```
+
+## 🌐 Custom Domain Setup
+
+For `legal.misitio.com`:
+
+### Vercel:
+1. Add domain in Vercel dashboard
+2. Configure DNS: `CNAME legal → cname.vercel-dns.com`
+
+### Cloudflare Pages:
+1. Add custom domain in Cloudflare dashboard
+2. DNS automatically configured if domain is on Cloudflare
+
+## 📊 Build Settings
+
+| Setting | Value |
+|---------|-------|
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
+| Install Command | `npm install` |
+| Node Version | 18+ |
+
+## 🎯 Features
+
+- ⚡ Lightning-fast static site generation with Astro
+- 📱 Fully responsive design
+- ♿ Accessible markup and navigation
+- 🎨 Clean, professional design inspired by major brands
+- 🔗 Deep-linking support for individual brand sections
+- 🌍 SEO-friendly structure
+- 🚀 Optimized for Vercel and Cloudflare Pages
+
+## 📝 Tech Stack
+
+- **Framework**: [Astro](https://astro.build/)
+- **Language**: TypeScript
+- **Styling**: CSS (scoped)
+- **Deployment**: Vercel / Cloudflare Pages
+
+## 🔒 Design Philosophy
+
+The design follows a clean, minimalist aesthetic:
+- Black navigation bar for professional appearance
+- Clean typography for readability
 - Easy navigation between sections
 - Mobile-responsive layout
-- Accessible color contrast
+- Accessible color contrast (WCAG compliant)
 
-## License
+## 📄 License
 
 MIT
