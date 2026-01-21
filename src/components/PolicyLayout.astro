@@ -1,0 +1,209 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Layout title={title}>
+  <div class="page">
+    <header class="header">
+      <a href="/">
+        <img 
+          src="https://wordpress-xdcif.kinsta.app/wp-content/uploads/2026/01/Motion-Music-Group-Logo-Black.svg" 
+          alt="Motion Music Group"
+          class="logo"
+        />
+      </a>
+      <p class="update">Última actualización: Enero 2026</p>
+    </header>
+
+    <div class="container">
+      <slot />
+    </div>
+
+    <footer class="footer">
+      <p class="copy">© {new Date().getFullYear()} Motion Music Group Limited</p>
+      <nav class="nav">
+        <a href="/privacy">Política de Privacidad</a>
+        <span class="sep">|</span>
+        <a href="/terms">Términos de Uso</a>
+        <span class="sep">|</span>
+        <a href="/cookies">Configuración de Cookies</a>
+      </nav>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    padding: 30px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+  }
+  
+  .logo {
+    height: 50px;
+    max-width: 280px;
+  }
+  
+  .update {
+    font-size: 0.813rem;
+    color: #666;
+    margin-top: 15px;
+  }
+  
+  .container {
+    flex: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .footer {
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+    background: #fafafa;
+  }
+  
+  .copy {
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.813rem;
+  }
+  
+  .nav a {
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  .nav a:hover {
+    color: #0066cc;
+  }
+  
+  .sep {
+    color: #666;
+  }
+  
+  :global(.policy-content h1) {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #000;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  
+  :global(.policy-content h2) {
+    font-size: 1.5rem;
+    margin: 40px 0 20px;
+    color: #000;
+    font-weight: 600;
+  }
+  
+  :global(.policy-content h3) {
+    font-size: 1.2rem;
+    margin: 30px 0 15px;
+    font-weight: 600;
+  }
+  
+  :global(.policy-content p) {
+    margin-bottom: 16px;
+    line-height: 1.7;
+    color: #333;
+  }
+  
+  :global(.policy-content ul) {
+    margin: 20px 0 20px 25px;
+    line-height: 1.7;
+  }
+  
+  :global(.policy-content li) {
+    margin-bottom: 10px;
+  }
+  
+  :global(.policy-content a) {
+    color: #0066cc;
+    text-decoration: underline;
+  }
+  
+  :global(.policy-content strong) {
+    font-weight: 600;
+    color: #000;
+  }
+  
+  @media (max-width: 768px) {
+    .logo {
+      height: 40px;
+      max-width: 240px;
+    }
+    
+    .container {
+      padding: 30px 20px;
+    }
+    
+    :global(.policy-content h1) {
+      font-size: 1.75rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header {
+      padding: 20px 15px;
+    }
+    
+    .logo {
+      height: 35px;
+      max-width: 200px;
+    }
+    
+    .update {
+      font-size: 0.75rem;
+    }
+    
+    .container {
+      padding: 25px 15px;
+    }
+    
+    .nav {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .sep {
+      display: none;
+    }
+    
+    :global(.policy-content h1) {
+      font-size: 1.5rem;
+    }
+    
+    :global(.policy-content h2) {
+      font-size: 1.25rem;
+    }
+    
+    :global(.policy-content p),
+    :global(.policy-content li) {
+      font-size: 0.938rem;
+    }
+  }
+</style>
