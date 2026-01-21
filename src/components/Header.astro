@@ -1,0 +1,63 @@
+---
+import type { BrandConfig } from '../config/brands';
+
+interface Props {
+  brand: BrandConfig;
+}
+
+const { brand } = Astro.props;
+---
+
+<header class="header">
+  <div class="container">
+    <div class="brand-info">
+      <h1 class="brand-name">{brand.name}</h1>
+    </div>
+    <div class="last-updated">
+      <span>Última actualización: {brand.lastUpdated}</span>
+    </div>
+  </div>
+</header>
+
+<style define:vars={{ primaryColor: brand.primaryColor }}>
+  .header {
+    background-color: var(--primaryColor);
+    color: white;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .last-updated {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .brand-name {
+      font-size: 1.25rem;
+    }
+  }
+</style>

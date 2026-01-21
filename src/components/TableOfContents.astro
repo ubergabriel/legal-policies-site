@@ -1,0 +1,108 @@
+---
+import type { TableOfContentsItem } from '../types';
+
+interface Props {
+  items: TableOfContentsItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="toc-container">
+  <h2 class="toc-title">GUÍA RÁPIDA DE CONTENIDOS</h2>
+  <nav class="toc">
+    <table class="toc-table">
+      <tbody>
+        {items.map((item) => (
+          <tr>
+            <td class="toc-number">{item.number}</td>
+            <td class="toc-link">
+              <a href={`#${item.id}`}>{item.title}</a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </nav>
+</div>
+
+<style>
+  .toc-container {
+    margin: 3rem 0;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .toc-title {
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 1rem;
+    margin: 0;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .toc {
+    padding: 0;
+  }
+
+  .toc-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .toc-table tr {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .toc-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .toc-number {
+    width: 50px;
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+    color: #1f2937;
+    background-color: #f8f9fa;
+    border-right: 1px solid #e5e7eb;
+  }
+
+  .toc-link {
+    padding: 1rem 1.5rem;
+  }
+
+  .toc-link a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    display: block;
+    transition: color 0.2s;
+  }
+
+  .toc-link a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .toc-number {
+      width: 40px;
+      padding: 0.75rem;
+    }
+
+    .toc-link {
+      padding: 0.75rem 1rem;
+    }
+
+    .toc-link a {
+      font-size: 0.875rem;
+    }
+  }
+</style>
