@@ -1,137 +1,225 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getAllBrands } from '../config/brands';
+
+const brands = getAllBrands();
 ---
 
-<Layout title="Legal | Motion Music Group">
-  <div class="page">
-    <div class="content">
-      <div class="logo-area">
-        <img 
-          src="https://wordpress-xdcif.kinsta.app/wp-content/uploads/2026/01/Motion-Music-Group-Logo-Black.svg" 
-          alt="Motion Music Group"
-          class="logo"
-        />
-      </div>
-
-      <footer class="footer">
-        <p class="copy">© {new Date().getFullYear()} Motion Music Group Limited</p>
-        <nav class="nav">
-          <a href="/privacy">Política de Privacidad</a>
-          <span class="sep">|</span>
-          <a href="/terms">Términos de Uso</a>
-          <span class="sep">|</span>
-          <a href="/cookies">Configuración de Cookies</a>
-        </nav>
-      </footer>
+<Layout title="Políticas Legales - Portal Multimarca">
+  <main class="main-container">
+    <div class="hero">
+      <h1>Portal de Políticas Legales</h1>
+      <p class="subtitle">
+        Accede a las políticas de privacidad y cookies de nuestras marcas
+      </p>
     </div>
-  </div>
+
+    <div class="brands-grid">
+      {brands.map((brand) => (
+        <div class="brand-card" style={`border-top: 4px solid ${brand.primaryColor}`}>
+          <div class="brand-header">
+            <h2 style={`color: ${brand.primaryColor}`}>{brand.name}</h2>
+            <p class="brand-domain">{brand.domain}</p>
+          </div>
+          
+          <div class="policies-list">
+            <a 
+              href={`/politica-de-privacidad/${brand.id}`} 
+              class="policy-link"
+              style={`border-left-color: ${brand.primaryColor}`}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M10 6V10L13 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span>Política de Privacidad</span>
+            </a>
+            
+            <a 
+              href={`/politica-de-cookies/${brand.id}`} 
+              class="policy-link"
+              style={`border-left-color: ${brand.primaryColor}`}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="7" cy="8" r="1.5" fill="currentColor"/>
+                <circle cx="12" cy="7" r="1" fill="currentColor"/>
+                <circle cx="8" cy="12" r="1" fill="currentColor"/>
+                <circle cx="13" cy="11" r="1.5" fill="currentColor"/>
+              </svg>
+              <span>Política de Cookies</span>
+            </a>
+          </div>
+
+          <div class="brand-footer">
+            <p class="last-updated">Última actualización: {brand.lastUpdated}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="info-section">
+      <h2>Información General</h2>
+      <p>
+        Este portal centraliza las políticas legales de nuestras marcas. Cada política está adaptada
+        a los servicios específicos de cada marca, garantizando transparencia y cumplimiento normativo.
+      </p>
+      <p>
+        Si tienes preguntas sobre alguna política, contáctanos directamente a través del email
+        proporcionado en cada sección.
+      </p>
+    </div>
+  </main>
 </Layout>
 
 <style>
-  .page {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    padding: 20px;
-  }
-  
-  .content {
-    width: 100%;
+  .main-container {
     max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .hero {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .brand-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .brand-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .brand-header {
+    padding: 1.5rem;
+    background: #f8f9fa;
+  }
+
+  .brand-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .brand-domain {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  .policies-list {
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
+    gap: 1rem;
   }
-  
-  .logo-area {
-    flex: 1;
+
+  .policy-link {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 40px 0;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-left: 3px solid;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 500;
+    transition: all 0.2s;
   }
-  
-  .logo {
-    max-width: 400px;
-    width: 100%;
-    height: auto;
+
+  .policy-link:hover {
+    background: #e5e7eb;
+    transform: translateX(4px);
   }
-  
-  .footer {
-    width: 100%;
-    padding: 30px 20px;
-    text-align: center;
-    border-top: 1px solid #e0e0e0;
+
+  .policy-link svg {
+    flex-shrink: 0;
+    color: #6b7280;
   }
-  
-  .copy {
+
+  .brand-footer {
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .last-updated {
     font-size: 0.75rem;
-    color: #666;
-    margin-bottom: 15px;
-    letter-spacing: 0.3px;
+    color: #6b7280;
+    margin: 0;
+    text-align: center;
   }
-  
-  .nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    font-size: 0.813rem;
+
+  .info-section {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid #2563eb;
   }
-  
-  .nav a {
-    color: #000;
-    text-decoration: underline;
-    font-weight: 400;
+
+  .info-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 1rem 0;
   }
-  
-  .nav a:hover {
-    color: #0066cc;
+
+  .info-section p {
+    color: #4b5563;
+    line-height: 1.7;
+    margin-bottom: 1rem;
   }
-  
-  .sep {
-    color: #666;
-    margin: 0 4px;
+
+  .info-section p:last-child {
+    margin-bottom: 0;
   }
-  
+
   @media (max-width: 768px) {
-    .logo {
-      max-width: 300px;
+    .main-container {
+      padding: 2rem 1rem;
     }
-  }
-  
-  @media (max-width: 480px) {
-    .page {
-      padding: 15px;
+
+    .hero h1 {
+      font-size: 2rem;
     }
-    
-    .logo {
-      max-width: 250px;
+
+    .subtitle {
+      font-size: 1rem;
     }
-    
-    .footer {
-      padding: 20px 10px;
-    }
-    
-    .copy {
-      font-size: 0.688rem;
-      margin-bottom: 12px;
-    }
-    
-    .nav {
-      flex-direction: column;
-      gap: 10px;
-      font-size: 0.75rem;
-    }
-    
-    .sep {
-      display: none;
+
+    .brands-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
