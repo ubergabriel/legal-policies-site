@@ -3,22 +3,25 @@ import Layout from '../layouts/Layout.astro';
 
 interface Props {
   title: string;
+  lastUpdated?: string;
 }
 
-const { title } = Astro.props;
+const { title, lastUpdated = 'Enero 2026' } = Astro.props;
 ---
 
 <Layout title={title}>
   <div class="page">
     <header class="header">
-      <a href="/">
-        <img 
-          src="https://wordpress-xdcif.kinsta.app/wp-content/uploads/2026/01/Motion-Music-Group-Logo-Black.svg" 
-          alt="Motion Music Group"
-          class="logo"
-        />
-      </a>
-      <p class="update">Última actualización: Enero 2026</p>
+      <div class="header-content">
+        <a href="/" class="logo-link">
+          <img 
+            src="https://wordpress-xdcif.kinsta.app/wp-content/uploads/2026/01/Motion-Music-Group-Logo-Black.svg" 
+            alt="Motion Music Group"
+            class="logo"
+          />
+        </a>
+        <p class="last-revised">LAST REVISED: {lastUpdated}</p>
+      </div>
     </header>
 
     <div class="container">
@@ -26,13 +29,13 @@ const { title } = Astro.props;
     </div>
 
     <footer class="footer">
-      <p class="copy">© {new Date().getFullYear()} Motion Music Group Limited</p>
-      <nav class="nav">
-        <a href="/privacy">Política de Privacidad</a>
-        <span class="sep">|</span>
+      <p class="copyright">© {new Date().getFullYear()} Motion Music Group Limited</p>
+      <nav class="footer-nav">
+        <a href="/motionmusicgroup/privacy">Política de Privacidad</a>
+        <span class="separator">|</span>
         <a href="/terms">Términos de Uso</a>
-        <span class="sep">|</span>
-        <a href="/cookies">Configuración de Cookies</a>
+        <span class="separator">|</span>
+        <a href="/motionmusicgroup/cookies">Configuración de Cookies</a>
       </nav>
     </footer>
   </div>
@@ -43,102 +46,134 @@ const { title } = Astro.props;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: #fff;
   }
   
   .header {
-    padding: 30px 20px;
-    border-bottom: 1px solid #e0e0e0;
-    text-align: center;
+    padding: 40px 20px 30px;
+    background: #f5f5f5;
+  }
+  
+  .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
   }
   
   .logo {
-    height: 50px;
-    max-width: 280px;
+    height: 60px;
+    width: auto;
+    max-width: 300px;
   }
   
-  .update {
-    font-size: 0.813rem;
+  .last-revised {
+    font-size: 0.688rem;
     color: #666;
-    margin-top: 15px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-align: center;
   }
   
   .container {
     flex: 1;
-    max-width: 900px;
+    max-width: 1000px;
     width: 100%;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 60px 40px;
   }
   
   .footer {
     padding: 30px 20px;
     text-align: center;
     border-top: 1px solid #e0e0e0;
-    background: #fafafa;
+    background: #fff;
   }
   
-  .copy {
-    font-size: 0.75rem;
+  .copyright {
+    font-size: 0.688rem;
     color: #666;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
+    font-weight: 400;
   }
   
-  .nav {
+  .footer-nav {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-    font-size: 0.813rem;
+    font-size: 0.75rem;
   }
   
-  .nav a {
+  .footer-nav a {
     color: #000;
     text-decoration: underline;
+    font-weight: 400;
   }
   
-  .nav a:hover {
+  .footer-nav a:hover {
     color: #0066cc;
   }
   
-  .sep {
-    color: #666;
+  .separator {
+    color: #999;
+    padding: 0 4px;
   }
   
+  /* Policy Content Styles */
   :global(.policy-content h1) {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    color: #000;
-    font-weight: 700;
-    letter-spacing: -0.5px;
+    font-size: 2.25rem;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  
+  :global(.policy-content .domain) {
+    font-size: 1.125rem;
+    color: #666;
+    margin-bottom: 40px;
+    font-weight: 400;
   }
   
   :global(.policy-content h2) {
-    font-size: 1.5rem;
-    margin: 40px 0 20px;
-    color: #000;
+    font-size: 1.25rem;
+    margin: 50px 0 20px;
+    color: #333;
     font-weight: 600;
+    letter-spacing: -0.01em;
   }
   
   :global(.policy-content h3) {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 30px 0 15px;
+    color: #333;
     font-weight: 600;
   }
   
   :global(.policy-content p) {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     line-height: 1.7;
-    color: #333;
+    color: #555;
+    font-size: 0.938rem;
   }
   
   :global(.policy-content ul) {
-    margin: 20px 0 20px 25px;
+    margin: 20px 0 30px 0;
+    padding-left: 20px;
     line-height: 1.7;
   }
   
   :global(.policy-content li) {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    color: #555;
+    font-size: 0.938rem;
+    padding-left: 8px;
   }
   
   :global(.policy-content a) {
@@ -146,50 +181,65 @@ const { title } = Astro.props;
     text-decoration: underline;
   }
   
-  :global(.policy-content strong) {
-    font-weight: 600;
-    color: #000;
+  :global(.policy-content a:hover) {
+    color: #0052a3;
   }
   
+  :global(.policy-content strong) {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  /* Tablet */
   @media (max-width: 768px) {
+    .header {
+      padding: 30px 20px 25px;
+    }
+    
+    .logo {
+      height: 50px;
+      max-width: 260px;
+    }
+    
+    .container {
+      padding: 40px 30px;
+    }
+    
+    :global(.policy-content h1) {
+      font-size: 1.875rem;
+    }
+    
+    :global(.policy-content .domain) {
+      font-size: 1rem;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 480px) {
+    .header {
+      padding: 25px 20px 20px;
+    }
+    
     .logo {
       height: 40px;
-      max-width: 240px;
+      max-width: 220px;
+    }
+    
+    .last-revised {
+      font-size: 0.625rem;
     }
     
     .container {
       padding: 30px 20px;
     }
     
-    :global(.policy-content h1) {
-      font-size: 1.75rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .header {
-      padding: 20px 15px;
-    }
-    
-    .logo {
-      height: 35px;
-      max-width: 200px;
-    }
-    
-    .update {
-      font-size: 0.75rem;
-    }
-    
-    .container {
-      padding: 25px 15px;
-    }
-    
-    .nav {
+    .footer-nav {
       flex-direction: column;
       gap: 10px;
+      font-size: 0.688rem;
     }
     
-    .sep {
+    .separator {
       display: none;
     }
     
@@ -197,13 +247,22 @@ const { title } = Astro.props;
       font-size: 1.5rem;
     }
     
+    :global(.policy-content .domain) {
+      font-size: 0.938rem;
+    }
+    
     :global(.policy-content h2) {
-      font-size: 1.25rem;
+      font-size: 1.125rem;
+      margin: 35px 0 16px;
+    }
+    
+    :global(.policy-content h3) {
+      font-size: 0.938rem;
     }
     
     :global(.policy-content p),
     :global(.policy-content li) {
-      font-size: 0.938rem;
+      font-size: 0.875rem;
     }
   }
 </style>
