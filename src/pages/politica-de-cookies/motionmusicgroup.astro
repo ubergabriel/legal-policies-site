@@ -1,0 +1,153 @@
+---
+import PolicyLayout from '../../layouts/PolicyLayout.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import { getBrand } from '../../config/brands';
+
+const brand = getBrand('motionmusicgroup')!;
+
+const tocItems = [
+  { number: 1, title: '¿QUÉ ES UNA COOKIE?', id: 'que-es-cookie' },
+  { number: 2, title: 'CÓMO USAMOS LAS COOKIES', id: 'como-usamos-cookies' },
+  { number: 3, title: 'TIPOS DE COOKIES QUE UTILIZAMOS', id: 'tipos-cookies' },
+  { number: 4, title: 'COOKIES DE TERCEROS', id: 'cookies-terceros' },
+  { number: 5, title: 'CÓMO CONTROLAR LAS COOKIES', id: 'control-cookies' },
+  { number: 6, title: 'ACTUALIZACIONES DE ESTA POLÍTICA', id: 'actualizaciones' }
+];
+---
+
+<PolicyLayout title="POLÍTICA DE COOKIES" brand={brand} policyType="cookies">
+  <div class="intro">
+    <p>
+      Esta Política de Cookies describe cómo las cookies y tecnologías similares se utilizan en nuestros
+      sitios web y aplicaciones que contienen o enlazan con esta política.
+    </p>
+    <p>
+      <strong>Última revisión: {brand.lastUpdated}</strong>
+    </p>
+  </div>
+
+  <TableOfContents items={tocItems} />
+
+  <section id="que-es-cookie">
+    <h2>1. ¿QUÉ ES UNA COOKIE?</h2>
+    <p>
+      Una cookie es un pequeño archivo de información que el servidor del sitio transfiere al archivo de cookies
+      del navegador en tu dispositivo para que el contenido de esa cookie pueda ser recuperado y leído.
+    </p>
+    <p>
+      Las cookies generalmente no registran tu nombre o detalles de contacto específicos, pero algunas cookies
+      pueden asignar un identificador a un individuo.
+    </p>
+    <p>Existen otras tecnologías que usamos en nuestro sitio que funcionan de manera similar a las cookies:</p>
+    <ul>
+      <li><strong>Almacenamiento local HTML5:</strong> se utiliza principalmente para almacenar y recuperar datos en páginas HTML del mismo dominio</li>
+      <li><strong>Objetos compartidos locales:</strong> comúnmente llamados "Flash cookie", una pieza de datos que los sitios web que usan Adobe Flash pueden almacenar en tu computadora</li>
+      <li><strong>Huella digital del dispositivo:</strong> una forma de identificar un dispositivo único combinando ciertos atributos del dispositivo</li>
+      <li><strong>Scripts:</strong> listas de comandos ejecutados por programas o motores de scripts, usados para generar páginas web y automatizar procesos</li>
+      <li><strong>Píxeles de rastreo/Web beacons:</strong> pequeñas piezas de código cargadas cuando un usuario visita un sitio web, que pueden usarse para rastrear visitas, comportamiento del usuario, impresiones de anuncios y actividades en línea</li>
+      <li><strong>Plugins:</strong> complementos para un programa que añaden funcionalidad</li>
+    </ul>
+  </section>
+
+  <section id="como-usamos-cookies">
+    <h2>2. CÓMO USAMOS LAS COOKIES</h2>
+    <p>Utilizamos cookies y tecnologías similares para:</p>
+    <ul>
+      <li>Mantener tu sesión activa mientras navegas por nuestro sitio</li>
+      <li>Recordar tus preferencias y configuraciones</li>
+      <li>Mejorar la velocidad y seguridad del sitio</li>
+      <li>Analizar cómo los usuarios interactúan con nuestros servicios</li>
+      <li>Personalizar el contenido y las recomendaciones musicales</li>
+      <li>Medir la efectividad de nuestras campañas de marketing</li>
+    </ul>
+  </section>
+
+  <section id="tipos-cookies">
+    <h2>3. TIPOS DE COOKIES QUE UTILIZAMOS</h2>
+    
+    <h3>3.1 Cookies estrictamente necesarias</h3>
+    <p>
+      Estas cookies son esenciales para que puedas navegar por el sitio y utilizar sus funciones.
+      Sin estas cookies, los servicios que has solicitado no pueden proporcionarse.
+    </p>
+
+    <h3>3.2 Cookies de rendimiento</h3>
+    <p>
+      Estas cookies recopilan información sobre cómo los visitantes usan un sitio web, por ejemplo,
+      qué páginas visitan con más frecuencia. Usamos esta información para mejorar nuestro sitio.
+    </p>
+
+    <h3>3.3 Cookies de funcionalidad</h3>
+    <p>
+      Estas cookies permiten que el sitio recuerde las elecciones que haces y proporcionan
+      funciones mejoradas y más personales.
+    </p>
+
+    <h3>3.4 Cookies de publicidad/segmentación</h3>
+    <p>
+      Estas cookies se utilizan para ofrecer anuncios más relevantes para ti y tus intereses.
+      También se usan para limitar el número de veces que ves un anuncio.
+    </p>
+  </section>
+
+  <section id="cookies-terceros">
+    <h2>4. COOKIES DE TERCEROS</h2>
+    <p>
+      Utilizamos servicios de terceros que pueden establecer cookies en tu dispositivo cuando visitas nuestro sitio.
+      Estos terceros incluyen:
+    </p>
+    <ul>
+      <li><strong>Google Analytics:</strong> Para análisis de tráfico y comportamiento</li>
+      <li><strong>Redes sociales:</strong> Para compartir contenido y funciones sociales</li>
+      <li><strong>Proveedores de publicidad:</strong> Para mostrar anuncios relevantes</li>
+    </ul>
+    <p>
+      Consulta las políticas de privacidad de estos servicios para obtener más información sobre cómo
+      utilizan las cookies.
+    </p>
+  </section>
+
+  <section id="control-cookies">
+    <h2>5. CÓMO CONTROLAR LAS COOKIES</h2>
+    <p>
+      Puedes controlar y/o eliminar las cookies como desees. Puedes eliminar todas las cookies que ya
+      están en tu computadora y puedes configurar la mayoría de los navegadores para evitar que se coloquen.
+    </p>
+    <p>Para gestionar las cookies en los navegadores más populares:</p>
+    <ul>
+      <li><strong>Google Chrome:</strong> Configuración → Privacidad y seguridad → Cookies</li>
+      <li><strong>Firefox:</strong> Opciones → Privacidad y seguridad → Cookies</li>
+      <li><strong>Safari:</strong> Preferencias → Privacidad</li>
+      <li><strong>Edge:</strong> Configuración → Privacidad, búsqueda y servicios</li>
+    </ul>
+    <p>
+      Ten en cuenta que si eliminas o deshabilitas nuestras cookies, es posible que experimentes
+      interrupciones o funcionalidad limitada en ciertas áreas de nuestro sitio.
+    </p>
+  </section>
+
+  <section id="actualizaciones">
+    <h2>6. ACTUALIZACIONES DE ESTA POLÍTICA</h2>
+    <p>
+      Podemos cambiar esta Política de Cookies de vez en cuando, así que revisa periódicamente para actualizaciones.
+      Esta Política de Cookies fue revisada por última vez en la fecha especificada en la parte superior de la política.
+    </p>
+    <p>
+      Si tienes preguntas sobre esta política, contáctanos en <a href={`mailto:${brand.email}`}>{brand.email}</a>.
+    </p>
+  </section>
+</PolicyLayout>
+
+<style>
+  .intro {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-left: 4px solid #2563eb;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+  }
+
+  .intro p:last-child {
+    margin-bottom: 0;
+  }
+</style>

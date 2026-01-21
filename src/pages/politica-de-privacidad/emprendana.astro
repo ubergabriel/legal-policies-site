@@ -1,0 +1,147 @@
+---
+import PolicyLayout from '../../layouts/PolicyLayout.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import { getBrand } from '../../config/brands';
+
+const brand = getBrand('emprendana')!;
+
+const tocItems = [
+  { number: 1, title: 'INFORMACIÓN QUE RECOPILAMOS', id: 'informacion-recopilamos' },
+  { number: 2, title: 'CÓMO USAMOS TU INFORMACIÓN', id: 'como-usamos' },
+  { number: 3, title: 'CÓMO COMPARTIMOS TU INFORMACIÓN', id: 'como-compartimos' },
+  { number: 4, title: 'TRANSFERENCIAS INTERNACIONALES', id: 'transferencias' },
+  { number: 5, title: 'TIEMPO DE CONSERVACIÓN', id: 'conservacion' },
+  { number: 6, title: 'TUS DERECHOS', id: 'derechos' },
+  { number: 7, title: 'SEGURIDAD', id: 'seguridad' },
+  { number: 8, title: 'CONTACTO', id: 'contacto' }
+];
+---
+
+<PolicyLayout title="POLÍTICA DE PRIVACIDAD" brand={brand} policyType="privacy">
+  <div class="intro">
+    <p>
+      <strong>{brand.name}</strong> se toma muy en serio tu privacidad y la protección de tus datos personales.
+      Esta política describe cómo recopilamos, usamos y protegemos tu información personal cuando utilizas
+      nuestra plataforma para emprendedoras.
+    </p>
+    <p>
+      Esta Política de Privacidad fue actualizada por última vez en <strong>{brand.lastUpdated}</strong>.
+    </p>
+  </div>
+
+  <TableOfContents items={tocItems} />
+
+  <section id="informacion-recopilamos">
+    <h2>1. INFORMACIÓN QUE RECOPILAMOS</h2>
+    
+    <h3>1.1 Información que nos proporcionas</h3>
+    <p>Recopilamos información que nos proporcionas directamente cuando:</p>
+    <ul>
+      <li>Creas tu perfil de emprendedora</li>
+      <li>Participas en nuestra comunidad</li>
+      <li>Utilizas nuestros recursos y herramientas</li>
+      <li>Te comunicas con nosotras</li>
+      <li>Participas en eventos y programas</li>
+      <li>Te suscribes a nuestro contenido</li>
+    </ul>
+
+    <h3>1.2 Información recopilada automáticamente</h3>
+    <p>Cuando utilizas nuestra plataforma, recopilamos automáticamente:</p>
+    <ul>
+      <li>Información de uso y actividad en la plataforma</li>
+      <li>Información del dispositivo y navegador</li>
+      <li>Datos de ubicación (si nos das permiso)</li>
+      <li>Cookies y tecnologías similares</li>
+    </ul>
+  </section>
+
+  <section id="como-usamos">
+    <h2>2. CÓMO USAMOS TU INFORMACIÓN</h2>
+    <p>Utilizamos la información recopilada para:</p>
+    <ul>
+      <li>Proporcionar acceso a nuestra plataforma y recursos</li>
+      <li>Facilitar conexiones dentro de la comunidad</li>
+      <li>Personalizar tu experiencia</li>
+      <li>Enviarte contenido relevante y oportunidades</li>
+      <li>Organizar eventos y programas</li>
+      <li>Mejorar nuestros servicios</li>
+      <li>Cumplir con obligaciones legales</li>
+    </ul>
+  </section>
+
+  <section id="como-compartimos">
+    <h2>3. CÓMO COMPARTIMOS TU INFORMACIÓN</h2>
+    <p>Podemos compartir tu información con:</p>
+    <ul>
+      <li><strong>Otras emprendedoras:</strong> Información de perfil público dentro de la comunidad</li>
+      <li><strong>Proveedores de servicios:</strong> Empresas que nos ayudan a operar la plataforma</li>
+      <li><strong>Socios y patrocinadores:</strong> Para eventos y oportunidades (con tu consentimiento)</li>
+      <li><strong>Autoridades legales:</strong> Cuando sea requerido por ley</li>
+    </ul>
+  </section>
+
+  <section id="transferencias">
+    <h2>4. TRANSFERENCIAS INTERNACIONALES</h2>
+    <p>
+      Tu información puede ser transferida y procesada en países fuera de tu país de residencia.
+      Tomamos medidas para garantizar que tus datos estén protegidos adecuadamente.
+    </p>
+  </section>
+
+  <section id="conservacion">
+    <h2>5. TIEMPO DE CONSERVACIÓN</h2>
+    <p>
+      Conservamos tu información personal durante el tiempo que mantengas tu cuenta activa y
+      posteriormente según sea necesario para cumplir con obligaciones legales.
+    </p>
+  </section>
+
+  <section id="derechos">
+    <h2>6. TUS DERECHOS</h2>
+    <p>Tienes derecho a:</p>
+    <ul>
+      <li>Acceder a tu información personal</li>
+      <li>Corregir datos inexactos</li>
+      <li>Solicitar la eliminación de tus datos</li>
+      <li>Controlar la visibilidad de tu perfil</li>
+      <li>Oponerte al procesamiento de tus datos</li>
+      <li>Solicitar la portabilidad de tus datos</li>
+      <li>Retirar tu consentimiento</li>
+    </ul>
+    <p>
+      Para ejercer estos derechos, contáctanos en <a href={`mailto:${brand.email}`}>{brand.email}</a>.
+    </p>
+  </section>
+
+  <section id="seguridad">
+    <h2>7. SEGURIDAD</h2>
+    <p>
+      Implementamos medidas de seguridad robustas para proteger tu información personal
+      y crear un entorno seguro para nuestra comunidad.
+    </p>
+  </section>
+
+  <section id="contacto">
+    <h2>8. CONTACTO</h2>
+    <p>Si tienes preguntas sobre esta Política de Privacidad, contáctanos en:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href={`mailto:${brand.email}`}>{brand.email}</a></li>
+      <li><strong>Dirección:</strong> {brand.address}</li>
+      <li><strong>Sitio web:</strong> <a href={`https://${brand.domain}`} target="_blank" rel="noopener">{brand.domain}</a></li>
+    </ul>
+  </section>
+</PolicyLayout>
+
+<style>
+  .intro {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-left: 4px solid #059669;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+  }
+
+  .intro p:last-child {
+    margin-bottom: 0;
+  }
+</style>

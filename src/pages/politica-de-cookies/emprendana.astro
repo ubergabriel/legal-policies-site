@@ -1,0 +1,148 @@
+---
+import PolicyLayout from '../../layouts/PolicyLayout.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import { getBrand } from '../../config/brands';
+
+const brand = getBrand('emprendana')!;
+
+const tocItems = [
+  { number: 1, title: '¿QUÉ ES UNA COOKIE?', id: 'que-es-cookie' },
+  { number: 2, title: 'CÓMO USAMOS LAS COOKIES', id: 'como-usamos-cookies' },
+  { number: 3, title: 'TIPOS DE COOKIES QUE UTILIZAMOS', id: 'tipos-cookies' },
+  { number: 4, title: 'COOKIES DE TERCEROS', id: 'cookies-terceros' },
+  { number: 5, title: 'CÓMO CONTROLAR LAS COOKIES', id: 'control-cookies' },
+  { number: 6, title: 'ACTUALIZACIONES DE ESTA POLÍTICA', id: 'actualizaciones' }
+];
+---
+
+<PolicyLayout title="POLÍTICA DE COOKIES" brand={brand} policyType="cookies">
+  <div class="intro">
+    <p>
+      Esta Política de Cookies explica cómo {brand.name} utiliza cookies y tecnologías similares
+      para reconocerte cuando visitas nuestra plataforma.
+    </p>
+    <p>
+      <strong>Última revisión: {brand.lastUpdated}</strong>
+    </p>
+  </div>
+
+  <TableOfContents items={tocItems} />
+
+  <section id="que-es-cookie">
+    <h2>1. ¿QUÉ ES UNA COOKIE?</h2>
+    <p>
+      Una cookie es un archivo pequeño que se almacena en tu dispositivo (computadora, tablet o móvil)
+      cuando visitas un sitio web. Las cookies nos ayudan a mejorar tu experiencia en nuestra plataforma.
+    </p>
+    <p>También utilizamos tecnologías similares como:</p>
+    <ul>
+      <li><strong>Local Storage:</strong> almacenamiento en el navegador que persiste después de cerrar la sesión</li>
+      <li><strong>Session Storage:</strong> almacenamiento temporal durante tu visita</li>
+      <li><strong>Web beacons:</strong> pequeñas imágenes para rastrear interacciones</li>
+      <li><strong>Identificadores de dispositivo:</strong> para reconocer tu dispositivo</li>
+    </ul>
+  </section>
+
+  <section id="como-usamos-cookies">
+    <h2>2. CÓMO USAMOS LAS COOKIES</h2>
+    <p>En {brand.name}, utilizamos cookies para:</p>
+    <ul>
+      <li>Autenticar tu identidad y mantener tu sesión activa</li>
+      <li>Recordar tus preferencias de cuenta</li>
+      <li>Personalizar el contenido que ves</li>
+      <li>Mejorar la funcionalidad de la plataforma</li>
+      <li>Analizar cómo las emprendedoras usan nuestra comunidad</li>
+      <li>Enviar notificaciones relevantes</li>
+      <li>Proteger contra fraudes y abusos</li>
+    </ul>
+  </section>
+
+  <section id="tipos-cookies">
+    <h2>3. TIPOS DE COOKIES QUE UTILIZAMOS</h2>
+    
+    <h3>3.1 Cookies necesarias</h3>
+    <p>
+      Imprescindibles para el funcionamiento de la plataforma. Incluyen cookies de autenticación
+      y seguridad que no se pueden desactivar.
+    </p>
+
+    <h3>3.2 Cookies funcionales</h3>
+    <p>
+      Permiten funciones mejoradas y personalización, como recordar tu nombre, foto de perfil
+      y preferencias de notificación.
+    </p>
+
+    <h3>3.3 Cookies analíticas</h3>
+    <p>
+      Nos ayudan a entender cómo interactúas con la plataforma para mejorar tu experiencia
+      y la de toda la comunidad.
+    </p>
+
+    <h3>3.4 Cookies de marketing</h3>
+    <p>
+      Utilizadas para mostrarte contenido, eventos y oportunidades relevantes para tu perfil
+      de emprendedora.
+    </p>
+  </section>
+
+  <section id="cookies-terceros">
+    <h2>4. COOKIES DE TERCEROS</h2>
+    <p>
+      Trabajamos con socios de confianza que pueden establecer cookies para ayudarnos a ofrecer
+      mejores servicios:
+    </p>
+    <ul>
+      <li><strong>Google Analytics:</strong> para entender el uso de la plataforma</li>
+      <li><strong>Redes sociales:</strong> para compartir logros y contenido</li>
+      <li><strong>Proveedores de email:</strong> para comunicaciones efectivas</li>
+      <li><strong>Servicios de pago:</strong> para procesar transacciones seguras</li>
+    </ul>
+  </section>
+
+  <section id="control-cookies">
+    <h2>5. CÓMO CONTROLAR LAS COOKIES</h2>
+    <p>
+      Tienes control total sobre las cookies. Puedes gestionar tus preferencias desde:
+    </p>
+    <ul>
+      <li>La configuración de tu cuenta en {brand.name}</li>
+      <li>La configuración de privacidad de tu navegador</li>
+    </ul>
+    <p>Para configurar cookies en tu navegador:</p>
+    <ul>
+      <li><strong>Chrome:</strong> Configuración → Privacidad y seguridad → Cookies</li>
+      <li><strong>Firefox:</strong> Opciones → Privacidad y seguridad → Cookies y datos del sitio</li>
+      <li><strong>Safari:</strong> Preferencias → Privacidad → Cookies</li>
+      <li><strong>Edge:</strong> Configuración → Privacidad, búsqueda y servicios</li>
+    </ul>
+    <p>
+      <strong>Nota importante:</strong> Deshabilitar ciertas cookies puede limitar tu acceso
+      a algunas funciones de la comunidad.
+    </p>
+  </section>
+
+  <section id="actualizaciones">
+    <h2>6. ACTUALIZACIONES DE ESTA POLÍTICA</h2>
+    <p>
+      Actualizamos esta política regularmente para reflejar cambios en cómo utilizamos las cookies.
+      Te notificaremos de cambios importantes.
+    </p>
+    <p>
+      ¿Tienes preguntas? Contáctanos en <a href={`mailto:${brand.email}`}>{brand.email}</a>.
+    </p>
+  </section>
+</PolicyLayout>
+
+<style>
+  .intro {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-left: 4px solid #059669;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+  }
+
+  .intro p:last-child {
+    margin-bottom: 0;
+  }
+</style>

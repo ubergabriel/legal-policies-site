@@ -1,57 +1,127 @@
 # Legal Policies Site
 
-Static legal policies website built with Astro, featuring privacy and cookie policies for multiple brands.
+Sitio web estático de políticas legales construido con Astro, con políticas de privacidad y cookies para múltiples marcas.
 
-## 🚀 Quick Deploy
+## 🌐 Marcas Soportadas
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ubergabriel/legal-policies-site)
+Este sitio gestiona las políticas legales para:
+- **Motion Music Group** (motionmusicgroup.com)
+- **Brandkover** (brandkover.com)
+- **Bloooz** (bloooz.com)
+- **Emprendana** (emprendana.com)
 
-[![Deploy to Cloudflare Pages](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/ubergabriel/legal-policies-site)
+## 📝 Estructura de URLs
 
-## 📋 Structure
+Cada marca tiene sus propias páginas de políticas:
 
-- **Homepage** (`/`): Landing page with links to all policies
-- **Privacy Policy** (`/privacy`): Unified privacy policy with sections for:
-  - Motion Music (`/privacy#motionmusic`)
-  - Brandkover (`/privacy#brandkover`)
-  - Bloooz (`/privacy#bloooz`)
-- **Cookies Policy** (`/cookies`): Comprehensive cookies policy
+### Políticas de Privacidad
+- `/politica-de-privacidad/motionmusicgroup`
+- `/politica-de-privacidad/brandkover`
+- `/politica-de-privacidad/bloooz`
+- `/politica-de-privacidad/emprendana`
 
-## 🛠️ Development
+### Políticas de Cookies
+- `/politica-de-cookies/motionmusicgroup`
+- `/politica-de-cookies/brandkover`
+- `/politica-de-cookies/bloooz`
+- `/politica-de-cookies/emprendana`
+
+## 🏛️ Arquitectura
+
+```
+src/
+├── config/
+│   └── brands.ts              # Configuración de marcas (colores, info legal)
+├── components/
+│   ├── Header.astro          # Header con branding
+│   ├── Footer.astro          # Footer con links
+│   └── TableOfContents.astro # Tabla de contenidos estilo Warner Music
+├── layouts/
+│   ├── Layout.astro          # Layout base
+│   └── PolicyLayout.astro    # Layout para políticas
+├── pages/
+│   ├── index.astro           # Página principal con todas las marcas
+│   ├── politica-de-privacidad/
+│   │   ├── motionmusicgroup.astro
+│   │   ├── brandkover.astro
+│   │   ├── bloooz.astro
+│   │   └── emprendana.astro
+│   └── politica-de-cookies/
+│       ├── motionmusicgroup.astro
+│       ├── brandkover.astro
+│       ├── bloooz.astro
+│       └── emprendana.astro
+└── types/
+    └── index.ts              # Tipos TypeScript
+```
+
+## 🚀 Desarrollo
 
 ```bash
-# Install dependencies
+# Instalar dependencias
 npm install
 
-# Start development server
+# Iniciar servidor de desarrollo
 npm run dev
 
-# Build for production
+# Construir para producción
 npm run build
 
-# Preview production build
+# Previsualizar build de producción
 npm run preview
 ```
 
+## ➕ Añadir una Nueva Marca
+
+1. **Agregar configuración en `src/config/brands.ts`:**
+```typescript
+nuevamarca: {
+  id: 'nuevamarca',
+  name: 'Nueva Marca',
+  domain: 'nuevamarca.com',
+  primaryColor: '#000000',
+  secondaryColor: '#ffffff',
+  legalEntity: 'Nueva Marca LLC',
+  address: 'Dirección',
+  email: 'legal@nuevamarca.com',
+  lastUpdated: 'Enero 2026'
+}
+```
+
+2. **Crear archivos de políticas:**
+   - `src/pages/politica-de-privacidad/nuevamarca.astro`
+   - `src/pages/politica-de-cookies/nuevamarca.astro`
+
+3. Usa las páginas existentes como plantilla y actualiza el contenido.
+
+## 🎨 Personalización
+### Colores de Marca
+Cada marca tiene colores personalizados definidos en `brands.ts`:
+- `primaryColor`: Color principal (header, acentos)
+- `secondaryColor`: Color secundario (opcional)
+
+### Contenido Legal
+Edita los archivos `.astro` correspondientes en:
+- `src/pages/politica-de-privacidad/[marca].astro`
+- `src/pages/politica-de-cookies/[marca].astro`
+
 ## 📦 Deployment
 
-This site is optimized for deployment on:
-- ✅ **Vercel** (recommended)
-- ✅ **Cloudflare Pages** (recommended)
+Este sitio está optimizado para:
+- ✅ **Vercel** (recomendado)
+- ✅ **Cloudflare Pages** (recomendado)
 - GitHub Pages
 - Netlify
-- Any static hosting service
+- Cualquier servicio de hosting estático
 
-**See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.**
-
-### Quick Deploy to Vercel
+### Despliegue Rápido en Vercel
 
 ```bash
 npm install -g vercel
 vercel
 ```
 
-### Quick Deploy to Cloudflare Pages
+### Despliegue Rápido en Cloudflare Pages
 
 ```bash
 npm install -g wrangler
@@ -59,43 +129,7 @@ npm run build
 wrangler pages deploy dist
 ```
 
-## 🎨 Customization
-
-### Add a New Brand
-
-1. Open `src/pages/privacy.astro`
-2. Add a new section with the brand's ID (e.g., `id="newbrand"`)
-3. Update the navigation links
-4. Customize the content for the new brand
-
-### Update Styles
-
-- Global styles: `src/layouts/Layout.astro`
-- Page-specific styles: Inside each `.astro` file
-
-### Configure Domain
-
-Update `astro.config.mjs`:
-
-```js
-export default defineConfig({
-  site: 'https://legal.yourdomain.com'
-});
-```
-
-## 🌐 Custom Domain Setup
-
-For `legal.misitio.com`:
-
-### Vercel:
-1. Add domain in Vercel dashboard
-2. Configure DNS: `CNAME legal → cname.vercel-dns.com`
-
-### Cloudflare Pages:
-1. Add custom domain in Cloudflare dashboard
-2. DNS automatically configured if domain is on Cloudflare
-
-## 📊 Build Settings
+## 🔧 Configuración de Build
 
 | Setting | Value |
 |---------|-------|
@@ -104,32 +138,48 @@ For `legal.misitio.com`:
 | Install Command | `npm install` |
 | Node Version | 18+ |
 
-## 🎯 Features
+## 🎯 Características
 
-- ⚡ Lightning-fast static site generation with Astro
-- 📱 Fully responsive design
-- ♿ Accessible markup and navigation
-- 🎨 Clean, professional design inspired by major brands
-- 🔗 Deep-linking support for individual brand sections
-- 🌍 SEO-friendly structure
-- 🚀 Optimized for Vercel and Cloudflare Pages
+- ⚡ Generación estática ultrarrrápida con Astro
+- 📱 Diseño completamente responsive
+- ♿ Markup accesible y navegación
+- 🎨 Diseño limpio inspirado en Warner Music Group
+- 🔗 Sistema de tabla de contenidos navegable
+- 🌍 Estructura SEO-friendly
+- 🚀 Optimizado para Vercel y Cloudflare Pages
+- 🏗️ Sistema multi-marca escalable
+- 🎨 Colores personalizados por marca
+- 📝 Políticas separadas por marca
 
-## 📝 Tech Stack
+## 📚 Stack Tecnológico
 
 - **Framework**: [Astro](https://astro.build/)
-- **Language**: TypeScript
-- **Styling**: CSS (scoped)
+- **Lenguaje**: TypeScript
+- **Estilos**: CSS (scoped)
 - **Deployment**: Vercel / Cloudflare Pages
 
-## 🔒 Design Philosophy
+## 🔒 Filosofía de Diseño
 
-The design follows a clean, minimalist aesthetic:
-- Black navigation bar for professional appearance
-- Clean typography for readability
-- Easy navigation between sections
-- Mobile-responsive layout
-- Accessible color contrast (WCAG compliant)
+El diseño sigue una estética minimalista y profesional:
+- Barra de navegación con colores de marca
+- Tipografía clara para legibilidad
+- Navegación fácil con tabla de contenidos
+- Layout responsive para móviles
+- Contraste de color accesible (WCAG compliant)
+- Tabla de contenidos estilo Warner Music Group
+- Componentes reutilizables
 
-## 📄 License
+## 🔄 Migración desde Versión Anterior
+
+Si estás migrando desde la versión anterior con políticas unificadas:
+
+**URLs Antiguas → Nuevas URLs:**
+- `/privacy#motionmusic` → `/politica-de-privacidad/motionmusicgroup`
+- `/privacy#brandkover` → `/politica-de-privacidad/brandkover`
+- `/cookies` → `/politica-de-cookies/[marca]`
+
+Considera implementar redirects en tu configuración de hosting.
+
+## 📝 Licencia
 
 MIT

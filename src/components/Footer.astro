@@ -1,0 +1,108 @@
+---
+import type { BrandConfig } from '../config/brands';
+
+interface Props {
+  brand: BrandConfig;
+}
+
+const { brand } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>{brand.name}</h3>
+        <p>{brand.legalEntity}</p>
+        <p>{brand.address}</p>
+      </div>
+      <div class="footer-section">
+        <h3>Contacto</h3>
+        <p>Email: <a href={`mailto:${brand.email}`}>{brand.email}</a></p>
+        <p>Sitio web: <a href={`https://${brand.domain}`} target="_blank" rel="noopener">{brand.domain}</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Políticas Legales</h3>
+        <ul>
+          <li><a href={`/politica-de-privacidad/${brand.id}`}>Política de Privacidad</a></li>
+          <li><a href={`/politica-de-cookies/${brand.id}`}>Política de Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} {brand.legalEntity}. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 4rem;
+    padding: 3rem 0 1.5rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+
+  .footer-section p,
+  .footer-section li {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-section a {
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-section a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
