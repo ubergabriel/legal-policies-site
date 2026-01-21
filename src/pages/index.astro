@@ -2,82 +2,136 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Legal Policies">
-  <div class="container">
-    <h1>Legal Policies</h1>
-    <p class="intro">Welcome to our legal information center. Please select the policy you'd like to review:</p>
-    
-    <div class="policy-links">
-      <div class="policy-card">
-        <h2>Privacy Policies</h2>
-        <ul>
-          <li><a href="/privacy#motionmusic">Motion Music</a></li>
-          <li><a href="/privacy#brandkover">Brandkover</a></li>
-          <li><a href="/privacy#bloooz">Bloooz</a></li>
-        </ul>
+<Layout title="Legal | Motion Music Group">
+  <div class="page">
+    <div class="content">
+      <div class="logo-area">
+        <img 
+          src="https://wordpress-xdcif.kinsta.app/wp-content/uploads/2026/01/Motion-Music-Group-Logo-Black.svg" 
+          alt="Motion Music Group"
+          class="logo"
+        />
       </div>
-      
-      <div class="policy-card">
-        <h2>Cookie Policy</h2>
-        <ul>
-          <li><a href="/cookies">Cookies Policy</a></li>
-        </ul>
-      </div>
+
+      <footer class="footer">
+        <p class="copy">© {new Date().getFullYear()} Motion Music Group Limited</p>
+        <nav class="nav">
+          <a href="/privacy">Política de Privacidad</a>
+          <span class="sep">|</span>
+          <a href="/terms">Términos de Uso</a>
+          <span class="sep">|</span>
+          <a href="/cookies">Configuración de Cookies</a>
+        </nav>
+      </footer>
     </div>
   </div>
 </Layout>
 
 <style>
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
+  .page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 20px;
   }
   
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+  .content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
   }
   
-  .intro {
-    font-size: 1.1rem;
-    margin-bottom: 40px;
+  .logo-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 40px 0;
+  }
+  
+  .logo {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+  }
+  
+  .footer {
+    width: 100%;
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .copy {
+    font-size: 0.75rem;
     color: #666;
+    margin-bottom: 15px;
+    letter-spacing: 0.3px;
   }
   
-  .policy-links {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.813rem;
   }
   
-  .policy-card {
-    background: #f8f8f8;
-    padding: 30px;
-    border-radius: 8px;
-  }
-  
-  .policy-card h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .policy-card ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .policy-card li {
-    margin-bottom: 12px;
-  }
-  
-  .policy-card a {
-    color: #0066cc;
-    text-decoration: none;
-    font-size: 1.1rem;
-  }
-  
-  .policy-card a:hover {
+  .nav a {
+    color: #000;
     text-decoration: underline;
+    font-weight: 400;
+  }
+  
+  .nav a:hover {
+    color: #0066cc;
+  }
+  
+  .sep {
+    color: #666;
+    margin: 0 4px;
+  }
+  
+  @media (max-width: 768px) {
+    .logo {
+      max-width: 300px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .page {
+      padding: 15px;
+    }
+    
+    .logo {
+      max-width: 250px;
+    }
+    
+    .footer {
+      padding: 20px 10px;
+    }
+    
+    .copy {
+      font-size: 0.688rem;
+      margin-bottom: 12px;
+    }
+    
+    .nav {
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.75rem;
+    }
+    
+    .sep {
+      display: none;
+    }
   }
 </style>
